@@ -1,0 +1,27 @@
+body{
+    background-color: lightblue;
+}
+h1{
+    color: rgba(255, 255, 255, 0.674);
+    text-align: center;
+}
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-align: center;
+
+}
+.minha-div{
+    background-color: rgb(7, 7, 7);
+    color: rgb(196, 206, 206);
+    border: 2px solid black;
+    margin: 20px;
+    padding: 20px;
+}
+#minha-div{
+    background-color: rgb(116, 11, 11);
+    color: rgb(196, 206, 206);
+    border: 2px solid black;
+    margin: 20px;
+    padding: 20px;
+}
