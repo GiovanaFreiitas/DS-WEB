@@ -1,0 +1,55 @@
+body, html{
+  height: 100%;;
+}
+
+*{
+  margin: 0;
+}
+
+div{
+ background-color: rgb(59, 110, 132) ;
+ width: 600px;
+ text-align: center;
+ margin: auto;
+ height: 100%;
+
+}
+
+h1{
+  color: white;
+}
+
+nav{
+  display: inline-block;
+  width: 200px;
+  background-color: rgb(148, 195, 212);
+}
+
+a{
+  display: block;
+  margin: 10px;
+}
+
+.menu-top{
+  background-color: rgb(67, 140, 174);
+  width: 100%;
+  display: flex;
+  padding: 20px 50px;
+  height: auto;
+  
+}
+
+img{
+  width: 50px;
+  height: 50px;
+}
+a:link {
+  text-decoration: none;
+}
+
+
+a:link {
+  color: rgb(255, 255, 255);
+}
+
+
