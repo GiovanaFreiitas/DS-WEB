@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>JC Tintas – Sua loja de tintas em Boituva/SP</title>
+  <meta name="description" content="Loja de tintas em Boituva/SP com marcas Coral, Suvinil, Sherwin-Williams.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Estilos -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+  <style>
+    body { margin:0; font-family:Arial,sans-serif; background:#f4f4f4; }
+    header { background:#544001; padding:10px; text-align:center; color:#fff; }
+    nav a { margin:0 10px; color:#fff; text-decoration:none; }
+    .swiper { width:100%; max-width:900px; margin:20px auto; }
+    .content { max-width:900px; margin:20px auto; padding:0 10px; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:15px; }
+    .card { background:#fff; padding:15px; border-radius:5px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+    .card img { width:100%; height:auto; border-radius:5px; }
+    iframe { width:100%; height:500px; border:none; margin-top:20px; }
+    footer { text-align:center; padding:20px; background:#ddd; margin-top:40px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>JC Tintas</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#dicas">Dicas</a>
+      <a href="#simulador">Simulador</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <!-- Slider -->
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <!-- Exemplo de slide -->
+      <div class="swiper-slide">
+        <img src="fotos/banner1.jpg" alt="Promoção 1">
+      </div>
+      <div class="swiper-slide">
+        <img src="fotos/banner2.jpg" alt="Promoção 2">
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+
+  <div class="content">
+    <section id="eventos">
+      <h2>Eventos</h2>
+      <div class="cards" id="lista-eventos">
+        <!-- Os eventos serão carregados aqui -->
+      </div>
+    </section>
+
+    <section id="dicas">
+      <h2>Dicas</h2>
+      <div class="cards" id="lista-dicas">
+        <!-- As dicas serão carregadas aqui -->
+      </div>
+    </section>
+
+    <section id="simulador">
+      <h2>Simulador de Cores</h2>
+      <iframe src="https://www.suvinil.com.br/SimuladorV2/"></iframe>
+    </section>
+  </div>
+
+  <footer id="contato">
+    <p>JC Tintas – Boituva/SP • <a href="contato.php">Fale conosco</a></p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+      autoplay: { delay: 4000 },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    });
+
+    // Função para renderizar cards
+    function renderCard(item) {
+      return `
+        <div class="card">
+          <img src="fotos/${item.foto}" alt="${item.titulo}">
+          <h3>${item.titulo}</h3>
+          <p>${item.texto}</p>
+        </div>`;
+    }
+
+    // Carrega eventos
+    fetch('api_eventos.php')
+      .then(r => r.json())
+      .then(data => {
+        const html = data.map(e => renderCard(e)).join('');
+        document.getElementById('lista-eventos').innerHTML = html;
+      });
+
+    // Carrega dicas
+    fetch('api_dicas.php')
+      .then(r => r.json())
+      .then(data => {
+        const html = data.map(d => renderCard(d)).join('');
+        document.getElementById('lista-dicas').innerHTML = html;
+      });
+  </script>
+</body>
+</html>
